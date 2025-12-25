@@ -1,9 +1,18 @@
-import { View, Text } from 'react-native';
+// screens/HomeScreen.js
+import { View, Text, StyleSheet } from 'react-native';
 
-export default function LoginScreen() {
+export default function HomeScreen({ route }) {
+  // Login ekranından gönderilen parametreyi alıyoruz
+  const { username } = route.params;
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Login Screen</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>Welcome, {username}</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  text: { fontSize: 20 }
+});
