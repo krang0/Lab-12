@@ -1,14 +1,16 @@
-// screens/LoginScreen.js
 import { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
+import { useAuth } from '../context/AuthContext'; 
 
 export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
+  const { login } = useAuth(); 
 
   const handleLogin = () => {
-    if (!username.trim()) return; // Boşsa işlem yapma
-    // Geri dönülemesin diye navigate yerine replace kullanıyoruz
-    navigation.replace('Home', { username });
+    if (!username.trim()) return;
+
+    login(username); 
+    navigation.replace('Home'); 
   };
 
   return (
